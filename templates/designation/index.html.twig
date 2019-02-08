@@ -1,0 +1,49 @@
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+
+    <div class="container">
+<h1>Products list</h1>
+   <p class="text-right">
+            <a href="{{ path('product_create') }}" class="btn btn-success">New product</a>
+        </p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Active</th>
+                <th scope="col"></th>
+    </tr>
+  </thead>
+  <body>
+  {% for products in list_products  %}
+    <tr>
+      <th scope="">{{ products.id }}</th>
+       <td>{{ products.designation}}</td>
+       <td>{{ products.reference }}</td>
+       <td>{{ products.brand }}</td>
+        <td>{{ products.price }}</td>
+        <td>{{ products.stock }}</td>
+       <td>{{ products.active }}</td>
+         <td>
+                    <a href="{{ path('product_show', {"id": products.id }) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ path('product_delete', {"id": products.id }) }}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+    </tr>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+{% endblock %}
